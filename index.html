@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splendore Gaming Style Page</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+
+    /* ---------------- HERO SECTION ---------------- */
+
+    .hero {
+      height: 60vh;
+      background: src('images/logo/bg.png') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      text-shadow: 0 0 20px #ff00ff;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.8;
+      margin: 10px 0 20px;
+    }
+
+    .hero .cta {
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #ff00ff, #00eaff);
+      border: none;
+      color: black;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff00ff;
+    }
+
+    /* ---------------- EVENTS GRID ---------------- */
+
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 32px;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    .events {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+
+    .event-card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 10px #00eaff55;
+      transition: 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 15px #00eaff;
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .event-card h3 {
+      margin: 15px 0 10px;
+      font-size: 22px;
+      color: #00eaff;
+    }
+
+    .event-card p {
+      font-size: 14px;
+      opacity: 0.75;
+    }
+
+    .event-card button {
+      padding: 8px 16px;
+      margin-top: 10px;
+      background: #00eaff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s;
+      color: #0d0d0d;
+    }
+
+    .event-card button:hover {
+      background: #009bb8;
+      transform: scale(1.05);
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      opacity: 0.75;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 15px; }
+    }
+
+    /* ---- COC Style Dialogue ---- */
+
+    #cocDialogue {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: none;
+      align-items: flex-end;
+      z-index: 9999;
+    }
+
+    .coc-character {
+      height: 220px;
+      margin-right: -20px;
+      animation: popIn 0.4s ease-out;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .coc-bubble {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #8d5dd9;
+      padding: 20px;
+      border-radius: 15px;
+      border: 4px solid #ffffff;
+      font-family: "Poppins", sans-serif;
+      max-width: 300px;
+      position: relative;
+      animation: popIn 0.35s ease-out;
+      color: #2c1550;
+    }
+
+    .coc-image {
+      width: 260px;
+      border-radius: 12px;
+      border: 3px solid #2c1550;
+      display: none;
+    }
+
+    .coc-bubble::after {
+      content: '';
+      position: absolute;
+      left: -30px;
+      bottom: 30px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 30px solid #ffffff;
+    }
+
+    #cocNext {
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: #2c1550;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #cocNext:hover {
+      background: #2c1550;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/logo/Logo Splendore 2025-01.jpg" alt="Splendore Logo" style="height:90px;margin-bottom:15px;">
+      <h1>Welcome to Splendore</h1>
+      <button class="cta" onclick="document.getElementById('eventsSection').scrollIntoView({ behavior: 'smooth' });">Explore Events</button>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <h2 id="eventsSection" class="section-title">Events</h2>
+
+<div class="events">
+
+  <!-- 1. Echoes of Unity -->
+  <div class="event-card">
+    <img src="images/events/echosofunity.jpg" alt="Echoes of Unity">
+    <h3>Echoes of Unity</h3>
+    <p>Venue: RSCC</p>
+    <button type="button" onclick="startRoute('rscc')">View Route</button>
+  </div>
+
+  <!-- 2. Lag and Tag Cycle -->
+  <div class="event-card">
+    <img src="images/events/lagandtag.jpg" alt="Lag & Tag Cycle">
+    <h3>Lag & Tag Cycle</h3>
+    <p>Venue: Basketball Court</p>
+    <button type="button" onclick="startRoute('basketball')">View Route</button>
+  </div>
+
+  <!-- 3. Circuit of Titans -->
+  <div class="event-card">
+    <img src="images/events/circuitoftitans.jpg" alt="Circuit of Titans">
+    <h3>Circuit of Titans</h3>
+    <p>Venue: Parking Space (Swimming Pool)</p>
+    <button type="button" onclick="startRoute('parking')">View Route</button>
+  </div>
+
+  <!-- 4. Beata Deca -->
+  <div class="event-card">
+    <img src="images/events/beatadeca.jpg" alt="Beata Deca">
+    <h3>Beata Deca</h3>
+    <p>Venue: RSCC</p>
+    <button type="button" onclick="startRoute('rscc')">View Route</button>
+  </div>
+
+  <!-- 5. Doppelgänger Fest -->
+  <div class="event-card">
+    <img src="images/events/doppleganger.jpg" alt="Doppelgänger Fest">
+    <h3>Doppelgänger Fest</h3>
+    <p>Venue: Darsanam</p>
+    <button type="button" onclick="startRoute('darsanam')">View Route</button>
+  </div>
+
+  <!-- 6. Time Keeper's Trap -->
+  <div class="event-card">
+    <img src="images/events/ttt.jpg" alt="Time Keeper's Trap">
+    <h3>Time Keeper's Trap</h3>
+    <p>Venue: B2 </p>
+    <button type="button" onclick="startRoute('b2')">View Route</button>
+  </div>
+
+  <!-- 7. InstaFace Pop -->
+  <div class="event-card">
+    <img src="images/events/instafac.jpg" alt="InstaFace Pop">
+    <h3>InstaFace Pop</h3>
+    <p>Venue: Courtyard + Darsanam Steps </p>
+    <button type="button" onclick="startRoute('darsanam')">View Route</button>
+  </div>
+
+  <!-- 8. Ledora -->
+  <div class="event-card">
+    <img src="images/events/ledora.jpg" alt="Ledora">
+    <h3>Ledora</h3>
+    <p>Venue: RSCC</p>
+    <button type="button" onclick="startRoute('rscc')">View Route</button>
+  </div>
+
+  <!-- 10. Novator -->
+  <div class="event-card">
+    <img src="images/events/novator.jpg" alt="Novator">
+    <h3>Novator</h3>
+    <p>Venue: Carmel Hall </p>
+    <button type="button" onclick="startRoute('carmelhall')">View Route</button>
+  </div>
+
+  <!-- 11. Decima Intellectus -->
+  <div class="event-card">
+    <img src="images/events/decima.jpg" alt="Decima Intellectus">
+    <h3>Decima Intellectus</h3>
+    <p>Venue: Carmel lab</p>
+    <button type="button" onclick="startRoute('carmellab')">View Route</button>
+  </div>
+
+
+  <!-- 14. Reelistic (College) -->
+  <div class="event-card">
+    <img src="images/events/reelistic.jpg" alt="Reelistic College">
+    <h3>Reelistic (College)</h3>
+    <p>Venue: Room 402</p>
+    <button type="button" onclick="startRoute('room402')">View Route</button>
+  </div>
+
+  <!-- 15. Silent Expressions -->
+  <div class="event-card">
+    <img src="images/events/silentexpressions.jpg" alt="Silent Expressions">
+    <h3>Silent Expressions</h3>
+    <p>Venue: Darsanam</p>
+    <button type="button" onclick="startRoute('darsanam')">View Route</button>
+  </div>
+
+  <!-- 16. Artifex AI -->
+  <div class="event-card">
+    <img src="images/events/artifex.jpg" alt="Artifex AI">
+    <h3>Artifex AI</h3>
+    <p>Venue: Carmel Lab</p>
+    <button type="button" onclick="startRoute('carmellab')">View Route</button>
+  </div>
+
+  <!-- 17. Quest for Harmony -->
+  <div class="event-card">
+    <img src="images/events/questforharmony.jpg" alt="Quest for Harmony">
+    <h3>Quest for Harmony</h3>
+    <p>Venue: Esperanza</p>
+    <button type="button" onclick="startRoute('esperanza')">View Route</button>
+  </div>
+
+</div>
+
+
+  <footer>
+    © 2025 Splendore — Rajagiri College of Social Sciences
+  </footer>
+
+  <!-- Clash-of-Clans Style Dialogue -->
+  <div id="cocDialogue">
+    <img id="cocCharacter" class="coc-character" src="images/logo/character/aw1.png" alt="Guide Character" />
+    <div class="coc-bubble">
+      <p id="cocText">Welcome to Splendore!</p>
+      <img id="cocImage" class="coc-image" src="" alt="Route visual" />
+      <button id="cocNext" onclick="nextDialogue()">Next</button>
+    </div>
+  </div>
+
+  <script>
+    let cocSteps = [];
+    let cocIndex = 0;
+
+    const CHARACTER_AW = "images/logo/character/aw1.png";
+    const CHARACTER_AW2 = "images/logo/character/aw2.png";
+    const CHARACTER_HOORAY = "images/logo/character/hooray.png";
+
+    const getLandmarkImage = (label) => `https://via.placeholder.com/260x150?text=${encodeURIComponent(label)}`;
+
+    const ROUTES = {
+        rscc: [
+        { text: "You're already at RSCC! This is your event venue.", character: CHARACTER_HOORAY, image: getLandmarkImage("RSCC Hall") }
+        ],
+
+        basketball: [
+        { text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Reception. Take a LEFT here.", character: CHARACTER_AW2, image: "images/locations/carmelblock.webp" },
+        { text: "Walk straight towards the Old Block.", character: CHARACTER_AW2, image: "images/locations/old-block-recep.jpg" },
+        { text: "Move past Old Block and continue toward the Courtyard.", character: CHARACTER_AW2, image: "images/locations/courtyard.jpg" },
+        { text: "Now walk towards Darsanam. You're close!", character: CHARACTER_AW2, image: "images/locations/darshanam.jpg"  },
+        { text: "Walk DOWN the stairs beside Darsanam.", character: CHARACTER_AW2, image:  "images/locations/darshanamstair.jpg"},
+        { text: "You’ve reached the Basketball Court! Enjoy your event!", character: CHARACTER_HOORAY, image: "images/locations/bbcourt.jpg" }
+],
+parking: [
+  { text: "You're at RSCC! Let's go to the Parking Area near the Swimming Pool.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+  { text: "Move LEFT from the RSCC entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+  { text: "From the statue, walk FORWARD toward the Rajagiri School.", character: CHARACTER_AW2, image: "images/locations/rajagirischool.jpg"},
+  { text: "After the first block on your LEFT, take the FIRST LEFT turn.Walk straight toward the Swimming Pool area.", character: CHARACTER_AW2, image: "images/locations/swimm-landmark.jpg" },
+  { text: "You’ve reached the Parking Area near the Swimming Pool!", character: CHARACTER_HOORAY, image: "images/locations/swimmingblock.jpg" }
+],
+
+darsanam: [
+        { text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Reception. Take a LEFT here.", character: CHARACTER_AW2, image: "images/locations/carmelblock.webp" },
+        { text: "Walk straight towards the Old Block.", character: CHARACTER_AW2, image: "images/locations/old-block-recep.jpg" },
+        { text: "Move past Old Block and continue toward the Courtyard.", character: CHARACTER_AW2, image: "images/locations/courtyard.jpg" },
+        { text: "Now take the steps DOWN to reach Darsanam.", character: CHARACTER_AW2, image: "images/locations/instaface.png" },
+        { text: "You’ve arrived at Darsanam!", character: CHARACTER_HOORAY, image: "images/locations/darshanam.jpg" }
+],
+
+courtyard: [
+        { text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Reception. Take a LEFT here.", character: CHARACTER_AW2, image: "images/locations/carmelblock.webp" },
+        { text: "Walk straight towards the Old Block.", character: CHARACTER_AW2, image: "images/locations/old-block-recep.jpg" },
+  { text: "You've reached the Courtyard!", character: CHARACTER_HOORAY, image: "images/locations/courtyard.jpg" }
+],
+
+b2: [
+        { text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you will see Carmel Reception.", character: CHARACTER_AW2, image: "images/locations/carmelblock.webp" },
+        { text: "Take the path DOWNWARD between the Park and the Carmel Block.Continue straight down the slope to reach Basement 2.", character: CHARACTER_AW2, image: "images/locations/basement.jpg" },
+        { text: "You're now at Basement 2 (B2)!", character: CHARACTER_HOORAY, image: getLandmarkImage("Basement 2") }
+],
+
+      carmelhall: [
+      { text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Block.", character: CHARACTER_AW2, image: "images/locations/carmelblockway.png" },
+  { text: "Take a LEFT at Carmel Reception to reach Carmel Hall.", character: CHARACTER_AW, image: "images/locations/carmelblock.webp"},
+  { text: "You’ve arrived at Carmel Hall!", character: CHARACTER_HOORAY, image: "images/locations/carmel-hall.jpg"}
+],
+carmellab: [
+{ text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Block.", character: CHARACTER_AW2, image: "images/locations/carmelblockway.png" },
+  { text: "Take a LEFT at Carmel Reception.Now take the STAIRS or LIFT to the 4th floor.", character: CHARACTER_AW, image: "images/locations/carmelblock.webp"},
+  { text: "You’ve reached the 4th floor — this is Carmel Lab!", character: CHARACTER_HOORAY, image: "images/locations/carmel-lab.jpg" }
+],
+room402: [
+{ text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Block.", character: CHARACTER_AW2, image: "images/locations/carmelblockway.png" },
+  { text: "Take a LEFT at Carmel Reception.Now take the STAIRS or LIFT to the 4th floor.", character: CHARACTER_AW, image: "images/locations/carmelblock.webp"},
+  { text: "You’ve arrived at Room 402!", character: CHARACTER_HOORAY, image: "images/locations/402.jpg" }
+],
+esperanza: [
+{ text: "You're at RSCC! Let's begin your journey to the Basketball Court.", character: CHARACTER_AW, image: "images/locations/rscc.webp" },
+        { text: "From RSCC, move towards the LEFT side of the entrance.Walk straight until you reach the Statue of Christ.", character: CHARACTER_AW2, image: "images/locations/statueofJesus.webp" },
+        { text: "From the statue, turn RIGHT and walk forward.Continue walking until you see the Children's Park.", character: CHARACTER_AW2, image: "images/locations/childrenspark.jpg" },
+        { text: "Near the Children's Park, you’ll find Carmel Block.", character: CHARACTER_AW2, image: "images/locations/carmelblockway.png" },
+  { text: "Take a LEFT at Carmel Reception.Now take the STAIRS or LIFT to the 7th floor.", character: CHARACTER_AW, image: "images/locations/carmelblock.webp"},
+  { text: "You are now on the 7th floor — welcome to Esperanza!", character: CHARACTER_HOORAY, image: "images/locations/esperanza.jpg" }
+],
+
+    };
+
+    function startRoute(eventKey) {
+      const steps = ROUTES[eventKey];
+      if (!steps) {
+        startCOCDialogue([
+          {
+            text: "Directions for this venue are coming soon. Check back shortly!",
+            character: CHARACTER_AW
+          }
+        ]);
+        return;
+      }
+      startCOCDialogue(steps);
+    }
+
+    function startCOCDialogue(steps) {
+      cocSteps = steps;
+      cocIndex = 0;
+      document.getElementById("cocDialogue").style.display = "flex";
+      updateCOCBubble();
+    }
+
+    function updateCOCBubble() {
+      const step = cocSteps[cocIndex];
+      document.getElementById("cocText").innerText = step.text;
+      if (step.character) {
+        document.getElementById("cocCharacter").src = step.character;
+      }
+      const imageEl = document.getElementById("cocImage");
+      if (step.image) {
+        imageEl.style.display = "block";
+        imageEl.src = step.image;
+      } else {
+        imageEl.style.display = "none";
+        imageEl.src = "";
+      }
+    }
+
+    function nextDialogue() {
+      cocIndex++;
+      if (cocIndex >= cocSteps.length) {
+        document.getElementById("cocDialogue").style.display = "none";
+        return;
+      }
+      updateCOCBubble();
+    }
+  </script>
+
+</body>
+</html>
